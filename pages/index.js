@@ -13,13 +13,19 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        {auth.user ? (
+        {auth.loading && <div>Loading...</div>}
+        {auth.user && (
           <>
-            <div>{auth.user.displayName}</div>
+            <div>{auth.user.name}</div>
+            <div>{auth.user.email}</div>
+            <div>{auth.user.provider}</div>
             <button onClick={(_e) => auth.signout()}>Sign Out</button>
           </>
-        ) : (
-          <button onClick={(_e) => auth.signin()}>Sign In with Github</button>
+        )}
+        {!auth.user && !auth.loading && (
+          <button onClick={(_e) => auth.signInWithGithub()}>
+            Sign In with Github
+          </button>
         )}
       </main>
 
