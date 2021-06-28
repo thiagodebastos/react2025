@@ -1,35 +1,43 @@
 import Head from 'next/head'
 import { Button } from '@chakra-ui/button'
-import { Text, Container } from '@chakra-ui/layout'
-import { Heading } from '@chakra-ui/layout'
-import { useAuth } from '../lib/auth'
+import { Stack, Text, Container, Code, Flex } from '@chakra-ui/layout'
 import { Spinner } from '@chakra-ui/react'
+import { ChatIcon } from '@chakra-ui/icons'
+import { useAuth } from '../lib/auth'
 
 export default function Home() {
   const auth = useAuth()
 
   return (
-    <>
+    <Container>
       <Head>
         <title>Fast Feedback</title>
       </Head>
-      <Container as="main">
-        <Heading>Fast Feedback</Heading>
+      <Stack
+        as="main"
+        direction="column"
+        alignItems="center"
+        height="100vh"
+        justify="center"
+      >
+        <ChatIcon w={12} h={12} />
         {auth.loading && <Spinner />}
         {auth.user && (
           <>
             <Text>{auth.user.name}</Text>
-            <Text>{auth.user.email}</Text>
+            <Code>{auth.user.email}</Code>
             <Text>{auth.user.provider}</Text>
-            <Button onClick={(_e) => auth.signout()}>Sign Out</Button>
+            <Button variant="link" size="sm" onClick={(_e) => auth.signout()}>
+              Sign Out
+            </Button>
           </>
         )}
         {!auth.user && !auth.loading && (
-          <Button onClick={(_e) => auth.signInWithGithub()}>
+          <Button mt={4} size="sm" onClick={(_e) => auth.signInWithGithub()}>
             Sign In with Github
           </Button>
         )}
-      </Container>
-    </>
+      </Stack>
+    </Container>
   )
 }
