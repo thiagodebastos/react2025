@@ -9,5 +9,8 @@
   "js/ts.implicitProjectConfig.experimentalDecorators": true,
   "javascript.suggest.completeFunctionCalls": true,
   "javascript.referencesCodeLens.enabled": true,
-  "javascript.referencesCodeLens.showOnAllFunctions": true
+  "javascript.referencesCodeLens.showOnAllFunctions": true,
+  "git.enableCommitSigning": true,
+  "git-graph.repository.sign.commits": true,
+  "git-graph.repository.commits.showSignatureStatus": true
 }
