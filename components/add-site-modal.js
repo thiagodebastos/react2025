@@ -41,7 +41,7 @@ export function AddSiteModal() {
                 <InputGroup>
                   <FormLabel>Link</FormLabel>
                   <InputLeftAddon>https://</InputLeftAddon>
-                  <Input placeholder="my-website.com.au" />
+                  <Input placeholder="my-amazing-website.com.au" />
                   <FormErrorMessage>Error message</FormErrorMessage>
                 </InputGroup>
               </FormControl>
