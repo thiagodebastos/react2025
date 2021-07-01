@@ -13,8 +13,10 @@ import {
   BreadcrumbLink,
 } from '@chakra-ui/react'
 import { MoonIcon } from '@chakra-ui/icons'
+import { useAuth } from '../lib/auth'
 
 export function DashboardShell({ children }) {
+  const { user } = useAuth()
   return (
     <Flex flexDirection="column">
       <Flex
@@ -35,10 +37,15 @@ export function DashboardShell({ children }) {
         </Stack>
         <Flex justifyContent="flex-start" alignItems="center">
           <Link mr={4}>Account</Link>
-          <Avatar size="sm" />
+          <Avatar size="sm" src={user.photoUrl} />
         </Flex>
       </Flex>
-      <Flex backgroundColor="gray.100" justifyContent="flex-start" p={8}>
+      <Flex
+        backgroundColor="gray.100"
+        justifyContent="flex-start"
+        p={8}
+        minH="calc(100vh - 64px)"
+      >
         <Flex
           flexDirection="column"
           justifyContent="flex-start"
@@ -50,13 +57,13 @@ export function DashboardShell({ children }) {
         >
           <Breadcrumb>
             <BreadcrumbItem>
-              <BreadcrumbLink>Sites</BreadcrumbLink>
+              <BreadcrumbLink color="gray.500">Sites</BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>
 
-          <Heading>Sites</Heading>
+          <Heading size="xl">Sites</Heading>
 
-          <Box backgroundColor="white" borderRadius={4} p={8} mt={4}>
+          <Box backgroundColor="white" borderRadius={4} p={12} mt={4}>
             <Stack spacing={4} alignItems="center">
               {children}
             </Stack>

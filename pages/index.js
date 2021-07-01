@@ -1,9 +1,10 @@
 import Head from 'next/head'
 import { Button } from '@chakra-ui/button'
 import { Stack, Text, Container, Code, Flex } from '@chakra-ui/layout'
-import { Spinner } from '@chakra-ui/react'
+import { Link, Spinner } from '@chakra-ui/react'
 import { ChatIcon } from '@chakra-ui/icons'
 import { useAuth } from '../lib/auth'
+import NextLink from 'next/link'
 
 export default function Home() {
   const auth = useAuth()
@@ -27,6 +28,9 @@ export default function Home() {
             <Text>{auth.user.name}</Text>
             <Code>{auth.user.email}</Code>
             <Text>{auth.user.provider}</Text>
+            <NextLink href="/dashboard">
+              <Link>--&gt; dashboard</Link>
+            </NextLink>
             <Button variant="link" size="sm" onClick={(_e) => auth.signout()}>
               Sign Out
             </Button>
